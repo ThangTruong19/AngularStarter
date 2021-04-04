@@ -1,21 +1,3 @@
-<h3 class="bg-primary p-1 text-white">{{getName()}}'s to do list</h3>
-<div class="my-1">
-  <input class="form-control" #todoName />
-  <button class="btn btn-primary mt-1" (click)="addTodoItem(todoName.value)">Add</button>
+<div class="bg-success p-2 text-center text-white">
+  This is SportsStore
 </div>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Description</th>
-      <th>Done</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of getItems(); let i = index">
-      <td>{{i+1}}</td>
-      <td>{{item.action}}</td>
-      <td><input type="checkbox" [(ngModel)]="item.done"/></td>     
-    </tr>
-  </tbody>
-</table>
