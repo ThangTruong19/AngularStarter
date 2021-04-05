@@ -40,7 +40,8 @@ export class StoreComponent{
     }
 
     get pageNumbers(){
-        return Array(Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productPerPage))
-                .fill(0).map((x,i)=> i+1)
+        //return Array(Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productPerPage))
+                //.fill(0).map((x,i)=> i+1)
+        return Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productPerPage)
     }
 }
