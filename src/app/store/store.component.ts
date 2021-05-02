@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Route } from "@angular/router";
+import { Cart } from "../model/cart.model";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
 
@@ -12,7 +14,7 @@ export class StoreComponent{
     productPerPage = 4;
     selectedPage = 1;
 
-    constructor(private productRepository: ProductRepository){}
+    constructor(private productRepository: ProductRepository,private cart: Cart){}
 
     get products(): Product[]{
         return this.productRepository.getProducts(this.selectedCategory)
@@ -23,7 +25,7 @@ export class StoreComponent{
         return this.productRepository.getCategories();
     }
 
-    changeCategory(newCategory: string){
+    changeCategory(newCategory: string = null){
         this.selectedCategory = newCategory;
         this.selectedPage = 1;
     }
@@ -43,5 +45,9 @@ export class StoreComponent{
         //return Array(Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productPerPage))
                 //.fill(0).map((x,i)=> i+1)
         return Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productPerPage)
+    }
+
+    addProductToCart(product: Product){
+        this.cart.addLine(product, 1);
     }
 }
