@@ -14,6 +14,9 @@
                 [class.active]="category == selectedCategory" (click)="changeCategory(category)">
                 {{category}}
             </button>
+            <button class="btn btn-block btn-danger m-t-3" routerLink="/auth">
+                Admin
+            </button>
         </div>
         <div class="col-9 p-2">
             <div *ngFor="let product of products" class="card m-1 p-1 bg-light">

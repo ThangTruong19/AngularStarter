@@ -7,6 +7,9 @@ import { StoreComponent } from './store/store.component';
 import { CartDetailComponent } from './store/cartDetail.component';
 import { CheckoutComponent } from './store/checkout.component';
 import { StoreFirstGuard } from './storeFirst.guard';
+import { AdminComponent } from './admin/admin.component';
+import { AuthComponent } from './admin/auth.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,7 @@ import { StoreFirstGuard } from './storeFirst.guard';
   imports: [
     BrowserModule,
     StoreModule,
+    AdminModule,
     RouterModule.forRoot([
       {
         path: 'store',
@@ -29,6 +33,16 @@ import { StoreFirstGuard } from './storeFirst.guard';
       {
         path: 'checkout',
         component: CheckoutComponent,
+        canActivate: [StoreFirstGuard]
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [StoreFirstGuard]
+      },
+      {
+        path: 'auth',
+        component: AuthComponent,
         canActivate: [StoreFirstGuard]
       },
       {
