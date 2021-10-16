@@ -18,7 +18,7 @@ export class AuthComponent{
             this.authService.authenticate(this.username, this.password)
                 .subscribe(response => {
                     if(response){
-                        this.router.navigateByUrl('/admin');
+                        this.router.navigateByUrl('/admin/main');
                     }
                     this.errorMessage = "Authentication Failed!";
                 })

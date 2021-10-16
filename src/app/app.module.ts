@@ -7,9 +7,6 @@ import { StoreComponent } from './store/store.component';
 import { CartDetailComponent } from './store/cartDetail.component';
 import { CheckoutComponent } from './store/checkout.component';
 import { StoreFirstGuard } from './storeFirst.guard';
-import { AdminComponent } from './admin/admin.component';
-import { AuthComponent } from './admin/auth.component';
-import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +15,6 @@ import { AdminModule } from './admin/admin.module';
   imports: [
     BrowserModule,
     StoreModule,
-    AdminModule,
     RouterModule.forRoot([
       {
         path: 'store',
@@ -37,12 +33,7 @@ import { AdminModule } from './admin/admin.module';
       },
       {
         path: 'admin',
-        component: AdminComponent,
-        canActivate: [StoreFirstGuard]
-      },
-      {
-        path: 'auth',
-        component: AuthComponent,
+        loadChildren: "./admin/admin.module#AdminModule",
         canActivate: [StoreFirstGuard]
       },
       {
